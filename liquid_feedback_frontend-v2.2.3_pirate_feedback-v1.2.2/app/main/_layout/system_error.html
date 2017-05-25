@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width" />
+    <title>Pirate Feedback Error</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" media="screen" href="__BASEURL__/static/trace.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="__BASEURL__/static/style.css" />
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="topbar_content">
+        <div class="navigation">
+          <div class="slot_navigation"><a href="__BASEURL__"><span class="logo">Pirate Feedback</span></a></div>
+        </div>
+        <br style="clear: both;" />
+      </div>
+    </div>
+    <div class="page">
+      <div class="page_head">
+        <div class="slot_head"><div class="title">A system error occurred! &mdash; Ein Systemfehler ist aufgetreten!</div></div>
+      </div>
+      <div class="main syserr">
+        <p>Most probably you found a software bug. Don't panic, you can now choose one of the following options:</p>
+        <nobr><a href="__BASEURL__">Go to start page</a></nobr>
+        <nobr><a href="#" onclick="window.location.reload()">Retry request</a></nobr>
+        <nobr><a href="mailto:feedback@piratenpartei-bayern.de?subject=Pirate%20Feedback%20bug%20report">Create a bug report email</a></nobr>
+        <hr />
+        <p>Du hast vermutlich gerade einen Fehler in der Software entdeckt. Das ist kein Grund zur Panik, Dir bleiben die folgenden Möglichkeiten:</p>
+        <nobr><a href="__BASEURL__">Weiter zur Startseite</a></nobr>
+        <nobr><a href="#" onclick="window.location.reload()">Anfrage wiederholen</a></nobr>
+        <nobr><a href="mailto:feedback@piratenpartei-bayern.de?subject=Pirate%20Feedback%20Fehlerbericht">E-Mail mit Fehlerbericht erstellen</a></nobr>
+        <hr />
+        <p>If you write a bug report, please include the following output:<br />
+          Falls Du einen Fehlerbericht erstellst, füge bitte die folgenden Ausgaben mit ein:</p>
+        <tt style="font-size: 75%;"><!-- WEBMCP SLOT system_error --></tt>
+      </div>
+    </div>
+    <div class="layout_trace">
+      <!-- WEBMCP SLOT trace -->
+    </div>
+  </body>
+</html>
