@@ -232,7 +232,10 @@ config.free_timing = {
 
 -- Display a message of the day once for each session
 -- ------------------------------------------------------------------------
--- config.motd = "===Message of the day===\nThe MOTD is formatted with rocket wiki"
+-- config.motd = [[===Message of the day===\nThe MOTD is formatted with rocket wiki
+May consits of multiple lines 
+but may not contain diacritical marks (Umlaute)
+]]
 
 -- Display the message of the day not only to logged in members
 -- ------------------------------------------------------------------------
