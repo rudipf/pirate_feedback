@@ -78,10 +78,17 @@ else
   end
 
   -- check for maximum number of delegations to avoid performance problems
-  if Delegation:count(app.session.member.id, unit_id, area_id, issue_id) >= 100 then
+  if Delegation:count(app.session.member.id, unit_id, area_id, issue_id) >= config.max_delegations_given then
     slot.put_into("error", _"The maximum number of delegations for one preference list is reached!")
     return false
   end
+
+  -- check for maximum number of incomming delegations to avoid power concentration
+  if Delegation:count(trustee_id, unit_id, area_id, issue_id) >= config.max_delegations_recieved then
+    slot.put_into("error", _"The maximum number of recieved delegations for one member reached!")
+    return false
+  end
+
 
   -- create new delegation
   delegation = Delegation:new()

@@ -630,6 +630,7 @@ return {
 ["The following login is connected to this email address:"] = "Der folgende Anmeldename ist mit dieser E-Mail-Adresse verbunden:";
 ["The initiators suggest to support the following initiative:"] = "Die Initiatoren empfehlen folgende Initiative zu unterstützen:";
 ["The maximum number of delegations for one preference list is reached!"] = "Die maximale Anzahl von Delegationen in einer Präferenzliste ist erreicht!";
+["The maximum number of recieved delegations for one member reached!"] = "Die maximale Anzahl von erhaltenen Delegationen wurde von dem Mitglied erreicht!";
 ["The requested area does not exist!"] = "Der angeforderte Themenbereich existiert nicht!";
 ["The requested initiative does not exist!"] = "Die angeforderte Initiative existiert nicht!";
 ["The requested issue does not exist!"] = "Das angeforderte Thema existiert nicht!";

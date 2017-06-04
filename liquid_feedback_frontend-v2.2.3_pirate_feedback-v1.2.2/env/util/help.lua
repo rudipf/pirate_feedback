@@ -37,7 +37,7 @@ function util.help(id, title)
         }
         local lang = locale.get("lang")
         local basepath = request.get_app_basepath()
-        local file_name = basepath .. "/locale/help/" .. id .. "." .. lang .. ".txt"  -- keine durchgängig deutschen html Texte 
+        local file_name = basepath .. "/locale/help/" .. id .. "." .. lang .. ".txt.html"  -- keine durchgängig deutschen html Texte 
         local file = io.open(file_name)
         if file ~= nil then
           local help_text = file:read("*a")

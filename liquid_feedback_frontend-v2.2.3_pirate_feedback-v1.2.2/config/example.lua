@@ -258,6 +258,13 @@ but may not contain diacritical marks (Umlaute)
 -- ------------------------------------------------------------------------
 -- config.deactivate_max_members = 50
 
+-- section for newer features after May 2017
+
+-- max number of delegations
+config.max_delegations_recieved =2
+config.max_delegations_given=2
+
+
 -- ========================================================================
 -- Do main initialisation (DO NOT REMOVE FOLLOWING SECTION)
 -- ========================================================================

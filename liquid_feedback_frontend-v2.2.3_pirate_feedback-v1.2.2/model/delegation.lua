@@ -116,3 +116,28 @@ function Delegation:count(truster_id, unit_id, area_id, issue_id)
   end
   return selector:count()
 end
+
+
+-- number of delegations incomming in one preference list
+function Delegation:count(trustee_id, unit_id, area_id, issue_id)
+  local selector = self:new_selector()
+    :add_where{ "trustee_id = ?", trustee_id }
+  if unit_id then
+    selector:add_where{ "unit_id = ?",    unit_id }
+  else
+    selector:add_where("unit_id ISNULL")
+  end
+  if area_id then
+    selector:add_where{ "area_id = ?",    area_id }
+  else
+    selector:add_where("area_id ISNULL")
+  end
+  if issue_id then
+    selector:add_where{ "issue_id = ? ",  issue_id }
+  else
+    selector:add_where("issue_id ISNULL")
+  end
+  return selector:count()
+end
+
+
