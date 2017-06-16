@@ -85,7 +85,7 @@ tabs[#tabs+1] = {
   label = _"Incoming delegations" .. " (" .. tostring(incoming_delegations_selector:count()) .. ")",
   module = "delegation",
   view = "_list",
-  params = { delegations_selector = incoming_delegations_selector, incoming = true }
+  params = { delegations_selector = incoming_delegations_selector, incoming = true ,truster_id=member.id}
 }
 
 local contacts_selector = member:get_reference_selector("saved_members"):add_where("public")

@@ -487,9 +487,14 @@ ui.container{
 
       local style
       local overridden = (not issue or issue.state ~= 'voting') and (record.overridden or not record.member_valid or not record.delegation_active)
+      if i == 1 then
+       trusted=record.member_id
+      end
 
       -- arrow
       if i == 2 then
+slot.put("<div>")
+
         ui.image{
           attr = {
             class = "delegation_arrow" .. (overridden and " overridden" or ""),
@@ -498,7 +503,41 @@ ui.container{
           static = "delegation_arrow_24_vertical.png"
         }
         slot.put("<br>")
-      end
+
+displayed= tonumber(app.session.member.id)
+
+if false or i==2 and 0==param.get("back_id",int)-displayed  then
+
+
+            ui.form{
+              attr = { class = "delegation_delete_incomming" },
+              module = "delegation",
+              action = "update",
+              params = {
+                unit_id  = unit  and unit.id  or nil,
+                area_id  = area  and area.id  or nil,
+                issue_id = issue and issue.id or nil,
+                initiative_id = initiative_id,
+                member_id = trusted,
+                delete_incomming =true 
+              },
+              routing = {
+                default = {
+                  mode   = "redirect",
+                  module = request.get_module(),
+                  view   = request.get_view(),
+                  id     = param.get_id_cgi(),
+                  params = param.get_all_cgi()
+                }
+              },
+content = function()
+ui.submit{ name = "delete_incomming", text = _"Delete" }
+end
+}
+end -- end of if
+
+slot.put("</div>")
+end
 
       -- scope
       if record.scope_out ~= record.scope_in then
@@ -543,10 +582,10 @@ ui.container{
               end
             }
           end
+--
         end
       }
 
-    end
-
+   end
   end
 }

@@ -13,6 +13,19 @@ if trustee_id == "_" then
   return
 end
 
+if param.get("delete_incomming") then
+  member_id = param.get("member_id", atom.integer) 
+  local delegation = Delegation:by_trustee(-1,0,0,0,0)
+
+  local delegation = Delegation:by_trustee(member_id, app.session.member.id, unit_id, area_id, issue_id)
+  if delegation then
+    delegation:destroy()
+  end
+end
+local delegation = Delegation:by_trustee(0,0,0,0,0) 
+
+
+
 local delegation = Delegation:by_trustee(app.session.member.id, trustee_id, unit_id, area_id, issue_id)
 
 if param.get("delete") then
@@ -43,7 +56,7 @@ elseif param.get("trustee_swap_id") then
   delegation.preference = delegation_swap_preference
   delegation:save()
 
-else
+elseif not param.get("delete_incomming") then 
 
   -- add delegation
 

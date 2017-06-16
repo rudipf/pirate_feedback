@@ -302,7 +302,7 @@ if app.session.member then
         label = _"Direct and by delegation",
         selector_modifier = function(selector)
           add_default_joins(selector)
-          selector:add_where("CASE WHEN issue.fully_frozen ISNULL AND issue.closed ISNULL THEN filter_interest.member_id NOTNULL ELSE filter_interest_s.member_id NOTNULL END OR filter_d_interest_s.member_id NOTNULL")
+          selector:add_where("CASE WHEN issue.fully_frozen ISNULL AND issue.closed ISNULL THEN filter_interest.member_id NOTNULL ELSE true END ")
           if filter_interest == "supported" then
             selector:add_where({
               "CASE WHEN issue.fully_frozen ISNULL AND issue.closed ISNULL THEN " ..
@@ -331,7 +331,7 @@ if app.session.member then
         label = _"Direct",
         selector_modifier = function(selector)
           add_default_joins(selector)
-          selector:add_where("CASE WHEN issue.fully_frozen ISNULL AND issue.closed ISNULL THEN filter_interest.member_id NOTNULL ELSE filter_interest_s.member_id NOTNULL END")
+          selector:add_where("CASE WHEN issue.fully_frozen ISNULL AND issue.closed ISNULL THEN filter_interest.member_id NOTNULL ELSE True END")
 
           if filter_interest == "supported" then
             selector:add_where({
@@ -359,7 +359,6 @@ if app.session.member then
         label = _"By delegation",
         selector_modifier = function(selector)
           add_default_joins(selector)
-          selector:add_where("filter_d_interest_s.member_id NOTNULL AND filter_interest.member_id ISNULL")
 
           if filter_interest == "supported" then
             selector:add_where({
