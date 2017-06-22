@@ -12,6 +12,12 @@ pages[#pages+1] = { view = "settings_password",       text = _"Change your passw
 if not config.locked_profile_fields.notify_email then
   pages[#pages+1] = { view = "settings_email",          text = _"Change your notification email address" }
 end
+
+if true or not config.member_delegation_limits then
+   pages[#pages+1] = { view = "settings_member_delegation_limits",          text = _"Change your delegation limits" }
+end
+
+
 pages[#pages+1] = { view = "settings_notification", text = _"Notification settings" }
 pages[#pages+1] = { view = "settings_delete",       text = _"Delete your personal data and deactivate your account" }
 
