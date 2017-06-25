@@ -263,6 +263,7 @@ but may not contain diacritical marks (Umlaute)
 -- max number of delegations
 config.max_delegations_recieved =2
 config.max_delegations_given=2
+config.default_member_delegation =-1
 
 
 -- ========================================================================

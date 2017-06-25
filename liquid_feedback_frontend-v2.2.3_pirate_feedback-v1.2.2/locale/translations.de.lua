@@ -931,4 +931,7 @@ return {
 ["years [interval expires]"] = "Jahren";
 ["years [interval time left]"] = "Jahre";
 ["years [interval]"] = "Jahre";
+["Change your delegation limits"] ="Die Maximal Anzahl Deiner ein und ausgehenden Delegationen setzen";
+["limit_outgoing"]= "Maximal ausgehende Delegationen ";
+["limit_incomming"]="Maximal eingehende Delegationen "
 }

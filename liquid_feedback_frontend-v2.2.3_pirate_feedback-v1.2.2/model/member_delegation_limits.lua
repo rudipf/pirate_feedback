@@ -1,9 +1,8 @@
+MemberDelegationLimits = mondelefant.new_class()
+MemberDelegationLimits.table= 'member_delegation_limits'
+MemberDelegationLimits.primary_key={"member_id"}
 
-member_delegation_limits = mondelefant.new_class()
-member_delegation_limits.table= 'member_delegation_limits'
-member_delegation_limits.primary_key={"member_id"}
-
-member_delegation_limits:add_reference{
+MemberDelegationLimits:add_reference{
   mode          = 'm1',
   to            = "Member",
   this_key      = 'member_id',
@@ -11,10 +10,19 @@ member_delegation_limits:add_reference{
   ref           = 'member',
 }
 
-function member_delegation_limits:by_pk(member_id)
+function MemberDelegationLimits:by_pk(member_id)
   return self:new_selector()
     :add_where{ "member_id = ?", member_id }
     :optional_object_mode()
     :exec()
 end
 
+function MemberDelegationLimits:helper(limit, conf)
+ local l=conf
+ if limit then 
+    if limit >=0 and limit <= conf then
+        l=limit
+    end
+  end
+return l
+end

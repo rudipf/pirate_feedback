@@ -119,7 +119,7 @@ end
 
 
 -- number of delegations incomming in one preference list
-function Delegation:count(trustee_id, unit_id, area_id, issue_id)
+function Delegation:countin(trustee_id, unit_id, area_id, issue_id)
   local selector = self:new_selector()
     :add_where{ "trustee_id = ?", trustee_id }
   if unit_id then
@@ -140,4 +140,27 @@ function Delegation:count(trustee_id, unit_id, area_id, issue_id)
   return selector:count()
 end
 
+function Delegation:countanyin(trustee_id)
+ local q=[[select  coalesce(max(count),0) maxcount 
+from (
+ select trustee_id,unit_id,area_id,issue_id,count(1) from delegation where issue_id is NULL or issue_id in (select issue_id from issue where closed is NULL) group by trustee_id,unit_id,area_id, issue_id ) sub
+ where trustee_id = ? ]]
 
+local c= db:query({q, trustee_id},"object").maxcount
+--db:query{"select ?",c.maxcount}
+
+return c
+end
+
+function Delegation:countanyout(truster_id)
+ local q=[[select  coalesce(max(count),0) maxcount
+from (
+ select truster_id,unit_id,area_id,issue_id,count(1) from delegation where issue_id is NULL or issue_id in (select issue_id from issue where closed is NULL) group by truster_id,unit_id,area_id, issue_id ) sub
+ where truster_id = ? ]]
+
+local c= db:query({q, truster_id},"object").maxcount
+--db:query{"select ?",c}
+
+return c
+end
+  

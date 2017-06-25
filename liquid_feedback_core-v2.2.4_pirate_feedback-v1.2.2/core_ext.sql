@@ -3,6 +3,6 @@
 
 create table member_delegation_limits (
 member_id integer PRIMARY KEY,
-limit_ougoing int default 1000,
-limit_ingcomming int default 1000);
+limit_outgoing int default 1000,
+limit_incomming int default 1000);
 
