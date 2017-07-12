@@ -261,10 +261,10 @@ but may not contain diacritical marks (Umlaute)
 -- section for newer features after May 2017
 
 -- max number of delegations
-config.max_delegations_recieved =2
-config.max_delegations_given=2
+config.max_delegations_recieved =3
+config.max_delegations_given=3
 config.default_member_delegation =-1
-
+config.display_area_stats=1
 
 -- ========================================================================
 -- Do main initialisation (DO NOT REMOVE FOLLOWING SECTION)

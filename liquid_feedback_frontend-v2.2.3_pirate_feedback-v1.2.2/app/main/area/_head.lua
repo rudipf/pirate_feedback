@@ -30,6 +30,14 @@ ui.container{ attr = { class = "area_head" }, content = function()
     end
   end }
 
+if show_content and member and config.display_area_stats then
+ui.link {
+module="area_statistics",view="show",id=area.id,
+        attr = { class = "content" },content="Stats"
+}
+end
+
+
   -- area delegation
   if area.delegation then
     execute.view{ module = "delegation", view = "_info", params = { area = area, member = member } }
