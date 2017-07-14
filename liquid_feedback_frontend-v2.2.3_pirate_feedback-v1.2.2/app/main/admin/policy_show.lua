@@ -24,8 +24,11 @@ ui.form{
 
     ui.field.text{ label = _"Admission time",     name = "admission_time" }
     ui.field.text{ label = _"Discussion time",    name = "discussion_time" }
+    
     ui.field.text{ label = _"Verification time",  name = "verification_time" }
     ui.field.text{ label = _"Voting time",        name = "voting_time" }
+    ui.field.boolean{label = _"Readjust timings on admission", name="readjust_timing"}
+    ui.field.text{ label = _"Hint", readonly = true, value=_"Details implemented in update trigger on issue."}
 
     ui.field.boolean{ label = _"Delegation", name = "delegation" }
 

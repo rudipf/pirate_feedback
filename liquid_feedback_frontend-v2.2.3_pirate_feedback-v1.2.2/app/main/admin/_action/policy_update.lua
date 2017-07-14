@@ -12,7 +12,7 @@ param.update(
   "direct_majority_positive", "direct_majority_non_negative",
   "indirect_majority_num", "indirect_majority_den", "indirect_majority_strict",
   "indirect_majority_positive", "indirect_majority_non_negative",
-  "no_reverse_beat_path", "no_multistage_majority", "polling"
+  "no_reverse_beat_path", "no_multistage_majority", "polling","readjust_timing"
 )
 
 if policy.admission_time == "" then policy.admission_time = nil end

@@ -89,5 +89,6 @@ ui.form{
 
     ui.field.text{ label = _"Active", value = policy.active and _"Yes" or _"No" }
 
+    ui.field.text{ label = _"Readjust timings on admission", value=policy.readjust_timing and _"Yes" or _"No" }
   end
 }

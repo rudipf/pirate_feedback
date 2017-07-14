@@ -30,7 +30,7 @@ ui.container{ attr = { class = "area_head" }, content = function()
     end
   end }
 
-if show_content and member and config.display_area_stats then
+if show_content and member and (config.display_area_stats or config.display_similar_voters) then
 ui.link {
 module="area_statistics",view="show",id=area.id,
         attr = { class = "content" },content="Stats"

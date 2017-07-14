@@ -933,5 +933,6 @@ return {
 ["years [interval]"] = "Jahre";
 ["Change your delegation limits"] ="Die Maximal Anzahl Deiner ein und ausgehenden Delegationen setzen";
 ["limit_outgoing"]= "Maximal ausgehende Delegationen ";
-["limit_incomming"]="Maximal eingehende Delegationen "
+["limit_incomming"]="Maximal eingehende Delegationen ";
+["Readjust timings on admission"]="Anzupassende Zeiten"
 }

@@ -110,6 +110,12 @@ columns[#columns+1] = {
       label = _"Voting" .. ":",
       value = policy.voting_time       and format.interval_text(policy.voting_time)       or _"variable"
     }
+    
+    ui.field.text{
+        label = _"Readjust timings on admission" .. ":",
+        value = policy.readjust_timing 
+      }
+
   end
 }
 
