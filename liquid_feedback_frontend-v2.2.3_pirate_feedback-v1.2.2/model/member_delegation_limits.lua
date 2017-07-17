@@ -11,6 +11,8 @@ MemberDelegationLimits:add_reference{
 }
 
 function MemberDelegationLimits:by_pk(member_id)
+
+local t=db:query("insert into member_delegation_limits (member_id,limit_outgoing,limit_incomming) select "..member_id..","..config.default_member_delegation..","..config.default_member_delegation.." where not exists (select 1 from member_delegation_limits where member_id="..member_id..");" )
   return self:new_selector()
     :add_where{ "member_id = ?", member_id }
     :optional_object_mode()
