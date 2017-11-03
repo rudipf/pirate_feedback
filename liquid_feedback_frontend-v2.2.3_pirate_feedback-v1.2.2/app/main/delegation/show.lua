@@ -506,7 +506,8 @@ slot.put("<div>")
 
 displayed= tonumber(app.session.member.id)
 
-if false or i==2 and 0==param.get("back_id",int)-displayed and param.get("back_params")=="tab=incoming_delegations&" then
+
+if false or param.get("back_id",int) and i==2 and 0==param.get("back_id",int)-displayed and param.get("back_params")=="tab=incoming_delegations&" then
 
 
             ui.form{
