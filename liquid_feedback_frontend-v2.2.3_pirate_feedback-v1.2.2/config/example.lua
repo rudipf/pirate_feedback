@@ -266,6 +266,11 @@ config.max_delegations_given=3
 config.default_member_delegation =-1
 config.display_area_stats=1
 
+-- config for survey.xml
+config.survey_area = 1
+config.survey_policy = 4
+config.survey_winner = false
+
 -- ========================================================================
 -- Do main initialisation (DO NOT REMOVE FOLLOWING SECTION)
 -- ========================================================================

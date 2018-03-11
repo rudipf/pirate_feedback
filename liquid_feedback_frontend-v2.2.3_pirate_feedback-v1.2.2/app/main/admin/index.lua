@@ -22,4 +22,18 @@ ui.tag{ tag = "ul", attr = { class = "menu_list" }, content = function()
       view = "member_list",
     }
   end }
+ ui.tag{tag="li", content =function()
+   ui.link{
+     text = _"Survey",
+     module ="admin",
+     view = "survey.xml",
+     params ={ 
+         area= config.survey_area,
+         policy=config.survey_policy,
+         winner=config.survey_winner
+         }
+      }
+  end }
+ 
+
 end }

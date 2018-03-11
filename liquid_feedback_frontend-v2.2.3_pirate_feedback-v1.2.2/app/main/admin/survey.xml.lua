@@ -19,6 +19,17 @@ istack=istack-1
 slot.put_into("default",'</'..stack[istack]..'>\n')
 end
 
+local sql=[[
+select ini.id as ini_id, isu.id as issue_id 
+from initiative ini ,issue isu 
+where ini.issue_id=isu.id 
+and area_id=]]
+sql=sql..config.survey_area.." and policy_id="..config.survey_policy
+sql=sql.." and winner=false and closed>'1 Jan 2016'"
+
+local inis=db:query(sql,"list")
+
+
 slot.put_into("default",[=[<?xml version="1.0" encoding="UTF-8"?>]=])
 
 xmls("document","")
@@ -108,8 +119,15 @@ xmls("fieldname","modulename")
 xmle()
 xmle()
 xmls("rows","")
+
+-- question/initiative loop 
+for i,ini in ipairs(inis) do 
+
+local initiative = Initiative:by_id(ini[1])
+local questiontext=initiative.current_draft:get_content("html")
+
 xmls("row","")
-xmls("qid","<![CDATA[1]]>")
+xmls("qid","<![CDATA["..initiative.id.."]]>")
 xmle()
 xmls("parent_qid","<![CDATA[0]]>")
 xmle()
@@ -121,7 +139,7 @@ xmls("type","<![CDATA[Y]]>")
 xmle()
 xmls("title","<![CDATA[A]]>")
 xmle()
-xmls("question","<![CDATA[Test Frage Text - sehr lang]]>")
+xmls("question","<![CDATA["..questiontext.."]]>")
 xmle()
 xmls("preg","")
 xmle()
@@ -144,6 +162,10 @@ xmle()
 xmls("modulename","")
 xmle()
 xmle()
+
+end
+
+-- question loop end
 xmle()
 xmle()
 xmls("surveys","")
