@@ -1,7 +1,7 @@
 stack={}
 istack=1
 
-slot.set_layout("xml", "text/xml")
+slot.set_layout("xml", "application/octet-stream")
 
 function xmls(tag,content) 
 stack[istack]=tag
@@ -25,10 +25,12 @@ from initiative ini ,issue isu
 where ini.issue_id=isu.id 
 and area_id=]]
 sql=sql..config.survey_area.." and policy_id="..config.survey_policy
-sql=sql.." and winner=false and closed>'1 Jan 2016'"
+sql=sql.." and winner=false"
+sql=sql.." and closed>'"..tostring(param.get("startdate",atom.date)).."'"
 
 local inis=db:query(sql,"list")
 
+--slot.put_into("default",tostring(param.get("startdate",atom.date)) )
 
 slot.put_into("default",[=[<?xml version="1.0" encoding="UTF-8"?>]=])
 
