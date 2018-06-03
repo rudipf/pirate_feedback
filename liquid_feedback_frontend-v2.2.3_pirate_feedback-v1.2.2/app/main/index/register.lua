@@ -98,7 +98,7 @@ ui.form{
       execute.view{ module = "member", view = "_profile", params = { member = member, include_private_data = true } }
 
       -- email
-      if not config.locked_profile_fields.notify_email then
+      if false and not config.locked_profile_fields.notify_email then
         ui.tag{
           tag = "p",
           content = _"Please enter your email address. This address will be used for automatic notifications (if you request them) and in case you've lost your password. This address will not be published. After registration you will receive an email with a confirmation link."

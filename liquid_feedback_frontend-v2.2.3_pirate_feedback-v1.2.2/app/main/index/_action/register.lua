@@ -70,13 +70,13 @@ if not param.get("step2") then
   return
 end
 
-local notify_email = util.trim(param.get("notify_email"))
+-- local notify_email = util.trim(param.get("notify_email"))
 local name         = util.trim(param.get("name"))
 local login        = util.trim(param.get("login"))
 local password1    = param.get("password1")
 local password2    = param.get("password2")
 
-if config.locked_profile_fields.notify_email then
+if false and config.locked_profile_fields.notify_email then
 
   if not member.notify_email then
     slot.put_into("error", _"This invite code has no email address assigned!")
@@ -92,7 +92,7 @@ if config.locked_profile_fields.notify_email then
 
 else
 
-  if not notify_email:match('^[^@%s]+@[^@%s]+$') then
+  if false and not notify_email:match('^[^@%s]+@[^@%s]+$') then
     slot.put_into("error", _"This email address is not valid!")
     return false
   end
