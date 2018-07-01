@@ -271,6 +271,12 @@ config.survey_area = 1
 config.survey_policy = 4
 config.survey_winner = false
 
+
+-- execute delete_private_data for locked or imported_locked members some time after locking in import_member.lua
+-- as postgres Interval
+config.delete_private_data_after = '2 days'
+
+
 -- ========================================================================
 -- Do main initialisation (DO NOT REMOVE FOLLOWING SECTION)
 -- ========================================================================

@@ -238,4 +238,18 @@ function util.import_members(file)
   print("Imported not locked members:        " .. imported_after)
   print()
 
+
+ if config.delete_private_data_after then
+	print("deleting non voting related data for locked members after "..config.delete_private_data_after.." being locked")
+
+	local locked=db:query("select m.id,max(until) from member m join member_history mh on m.id=mh.member_id where mh.active='t' and (m.locked='t' or m.locked_import='t') group by m.id having(max(until))>current_date-Interval '"..config.delete_private_data_after.."'", "list")
+
+	for i, locked_member in ipairs(locked) do
+		db:query("SELECT delete_member(" ..locked_member[1].. ")")
+	print("member_id "..locked_member[1].. )
+        end
+
+ end
+
+
 end
