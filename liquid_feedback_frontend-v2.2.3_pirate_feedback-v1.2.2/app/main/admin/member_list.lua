@@ -308,7 +308,18 @@ ui.paginate{
               }
             }
           end
+        },
+        {
+         content =function(record)
+          ui.link{
+             text=_"Data Sheet",
+             module="admin",
+             view="data_sheet.xml",
+             id=record.id
+           }
+          end
         }
+
       }
     }
   end
