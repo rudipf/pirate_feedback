@@ -1,8 +1,6 @@
 stack={}
 istack=1
 
-
-
 function xmls(tag,content) 
 stack[istack]=tag
 istack=istack+1
@@ -66,7 +64,7 @@ for i,k in ipairs(res) do
     xmle()
     for j,jj in ipairs(mtt) do
       if (mtt[j] ~=1 ) then
-      xmls(mtt[j], tostring(k[mtt[j]]))
+      xmls(mtt[j], "<![CDATA["..tostring(k[mtt[j]]).."]]>")
       --slot.put_into("default",mtt[j].." "..tostring(k[mtt[j]]).." </p> ")
       xmle()
       end
