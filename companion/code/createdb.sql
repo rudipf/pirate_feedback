@@ -10,7 +10,7 @@ comp_user_stimmbaustein varchar(255),
 regkey varchar(255) unique,
 isactive integer,
 modtime timestamp DEFAULT current_timestamp )
-
+;
 create or replace function checkmember(varchar(255) , varchar(255) , varchar(255) ,varchar(255) ,varchar(255) ,varchar(255) ,varchar(255) ,varchar(255) ) 
 returns integer
 Language 'plpgsql'

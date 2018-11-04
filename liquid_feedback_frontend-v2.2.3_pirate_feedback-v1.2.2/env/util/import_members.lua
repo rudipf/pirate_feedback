@@ -246,7 +246,7 @@ function util.import_members(file)
 
 	for i, locked_member in ipairs(locked) do
 		db:query("SELECT delete_member(" ..locked_member[1].. ")")
-	print("member_id "..locked_member[1].. )
+	print("member_id "..locked_member[1].."" )
         end
 
  end
