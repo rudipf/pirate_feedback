@@ -7,6 +7,12 @@ function format.wiki_text(wiki_text, formatting_engine)
   wiki_text =string.gsub(wiki_text, "ö", "{oe}")
   wiki_text =string.gsub(wiki_text, "Ö", "{Oe}")
   wiki_text =string.gsub(wiki_text, "ß", "{ss}")
+  wiki_text =string.gsub(wiki_text, "§", "Paragraph ")
+  wiki_text =string.gsub(wiki_text, "„", [["]] )
+  wiki_text =string.gsub(wiki_text, "“", [["]] )
+  wiki_text =string.gsub(wiki_text, "–", "-" )
+ 
+
   
   local html, errmsg, exitcode = assert(
     extos.pfilter(wiki_text, config.formatting_engine_executeables[formatting_engine])

@@ -54,6 +54,7 @@ tabs[#tabs+1] = {
   view = "_list",
   params = {
     for_state = "open",
+    filter_interest = "unit",
     issues_selector = Issue:new_selector()
       :add_where("issue.closed ISNULL")
       :add_order_by("coalesce(issue.fully_frozen + issue.voting_time, issue.half_frozen + issue.verification_time, issue.accepted + issue.discussion_time, issue.created + issue.admission_time) - now()")

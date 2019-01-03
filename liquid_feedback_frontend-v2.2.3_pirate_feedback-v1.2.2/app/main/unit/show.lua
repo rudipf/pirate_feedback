@@ -54,7 +54,8 @@ tabs[#tabs+1] = {
   params = {
     for_state = "open",
     issues_selector = open_issues_selector,
-    for_unit = true
+    for_unit = true,
+    filter_interest="any"
   }
 }
 
