@@ -33,8 +33,10 @@ echo $fromdate
 
 includes=`su www-data -c "psql pirate_feedback -t -c 'select invite_code from member where active = false;'" | awk ' { a="'"'"'"; if ($0 ~ "a"){ sub(" ","",$0);print a$0a"," }}' `
 
-
-cmd="select comp_name2,comp_emailaddress,regkey from import where comp_user_stimmbaustein='Ja' and modtime>='$fromdate' and comp_emailaddress like '%@%' and regkey in ("$includes" '-xx');"
+andclause=" and comp_emailaddress='junghaenel-hannover@gmx.de' "
+#andclause=" and comp_emailaddress like 'u%' "
+#andclause=" and comp_name2 like '% %' "
+cmd="select replace(comp_name2,' ','_'),comp_emailaddress,regkey from import where comp_user_stimmbaustein='Ja' "$andclause" and modtime>='$fromdate' and comp_emailaddress like '%@%' and regkey in ("$includes" '-xx');"
 
 #echo $cmd
 
@@ -42,14 +44,16 @@ cmd="select comp_name2,comp_emailaddress,regkey from import where comp_user_stim
 OIFS="$IFS" ; IFS=$'\n' ; oset="$-" ; set -f
 
 while IFS="$OIFS" read -a line 
-do 
-  echo ${line[0]}   
+do
+  toname=` echo ${line[0]} | sed s/'_'/' '/g ` 
+  echo ${line[0]}" ... "$toname   
   echo ${line[1]}   
   echo ${line[2]}
   echo ${line[3]}
   echo ${line[4]}
+  echo "end"
   sleep 30 
-echo "$mailtext" | sed s/#Name/${line[0]}/g | sed s/#regkey/${line[4]}/g | base64|  mail -aFrom:rudi@sme-nds.de -a"Mime-Version:1.0" -a"Content-Type: text/plain; charset=UTF-8" -a"Content-Transfer-Encoding: base64" -s $mailsub  ${line[2]} 
+echo "$mailtext" | sed s/#Name/$toname/g | sed s/#regkey/${line[4]}/g | base64|  mail -aFrom:rudi@sme-nds.de -a"Mime-Version:1.0" -a"Content-Type: text/plain; charset=UTF-8" -a"Content-Transfer-Encoding: base64" -s $mailsub  ${line[2]} 
 
 done < <(echo $cmd |  psql -U companion -t companion)
 
