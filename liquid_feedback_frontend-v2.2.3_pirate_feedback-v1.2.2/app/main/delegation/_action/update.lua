@@ -91,8 +91,10 @@ elseif not param.get("delete_incomming") then
   end
 
 
-  local limits =MemberDelegationLimits:by_pk(app.session.member_id,member_id)
+  local limits =MemberDelegationLimits:by_pk(app.session.member_id)
   local mdg=MemberDelegationLimits:helper(limits.limit_outgoing ,config.max_delegations_given )
+  local limits =MemberDelegationLimits:by_pk(trustee_id)
+
   local mdr=MemberDelegationLimits:helper(limits.limit_incomming ,config.max_delegations_recieved) 
   -- check for maximum number of delegations to avoid performance problems
   

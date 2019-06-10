@@ -1,21 +1,25 @@
 #/bin/bash
 
-path="/opt/pirate_feedback/companion/"
+path="/opt/pirate_feedback/pirate_feedback/companion/"
 
-cmd1=" tail -n +5 $path/files/20180525214606 | head -n -6 | sed 's/Ja;Du;hast;alle;Mitgliedsbeiträge;bezahlt;und;bist;stimmberechtigt./Ja/g' | awk  -F\";\" '/Ja/ {printf(\"%s\t\", \$0); next } 1' | sed 's/;;/; ;/g' "
+cmd1=" tail -n +5 $path/files/20181101084815 | head -n -6 | sed 's/Ja;Du;hast;alle;Mitgliedsbeiträge;bezahlt;und;bist;stimmberechtigt./Ja/g' | awk  -F\";\" '/Ja/ {printf(\"%s\t\", \$0); next } 1' | sed 's/;;/; ;/g' |  grep --binary-files=text 'und bist stimmberechtig' " 
 
-cols="1,2,3,4,8,10,24,37"
+cmd1=" iconv -fISO_8859-1 -tUTF-8 files/20181101084815 | tail -n +5 | head -n -6 |  grep --binary-files=text 'stimm' | sed 's/Du hast alle.*bist stimmberechtigt./Ja/g' | sed 's/Es sind nicht.*nicht stimmberechtigt/Nein/g' | sed 's/\"//g' | sed 's/\x27/ /g' "
+
+ echo $cmd1
+
+cols="1,2,3,4,8,10,23,37"
 
 cols2=$(echo $cols | sed 's/,/ \|/g' )  
 
 # eval $cmd1 |  head -1 | awk -F";" '{ for(i = 1; i <= NF; i++) { print i" "$i; } }' | grep "[$cols2]"
 # read
 
-eval $cmd1 | head -2 | cut -d";" -f$cols
+eval $cmd1 | head -5 | cut -d";" -f$cols
 
 echo " "
 
-eval $cmd1 | tail -n +2 | awk -F";" '{ print NF }' | sort | uniq -c
+eval $cmd1 | tail -n +2 | awk -F";" '{ print NF }' | sort -n | uniq -c
 
 
 echo 
@@ -31,12 +35,13 @@ else
 fi
 
 echo "weiter"
+#eval $cmd1 | tail -n +2 | cut -d";" -f$cols 
+#exit
+
+eval $cmd1 | tail -n +2 | cut -d";" -f$cols | awk -F";" '{print "select * from checkmember (\""$1"\",\""$2"\",\""$3"\",\""$4"\",\""$5"\",\""$6"\",\""$7"\",\""$8"\" ); " }' | sed s/\"/\'/g | psql companion -U companion -a
 
 
-eval $cmd1 | tail -n +2 | cut -d";" -f$cols | awk -F";" '{print "select * from checkmember\(\""$1"\",\""$2"\",\""$3"\",\""$4"\",\""$5"\",\""$6"\",\""$7"\",\""$8"\"\); " }' | sed s/\"/\'/g | psql companion -U companion -a
-
-
-psql companion -Ucompanion -A -c "select regkey,'Global' from import where comp_user_stimmbaustein='Ja';" | tail -n +2 | awk -F"|" '{print "\""$1"\";\""$2"\"" }' | head -n +1 > import.txt
+psql companion -Ucompanion -A -c "select regkey,'LV Niedersachsen' from import where comp_user_stimmbaustein='Ja';" | tail -n +2 | awk -F"|" '{print "\""$1"\";\""$2"\"" }' |  head -n -1 > import.txt
 
 echo "$ su www-data"
 echo "$ cd <path>/liquid_feedback_frontend"

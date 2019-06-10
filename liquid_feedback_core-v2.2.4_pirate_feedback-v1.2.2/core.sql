@@ -429,8 +429,8 @@ CREATE TABLE "policy" (
         CONSTRAINT "issue_quorum_if_and_only_if_not_polling" CHECK (
           ( "polling" = FALSE AND
             ( "issue_quorum_num" NOTNULL OR "issue_quorum_direct_num" NOTNULL ) AND
-            "issue_quorum_num"        ISNULL = "issue_quorum_den"        ISNULL AND
-            "issue_quorum_direct_num" ISNULL = "issue_quorum_direct_den" ISNULL AND
+            ("issue_quorum_num"        ISNULL) = ("issue_quorum_den"        ISNULL) AND
+            ("issue_quorum_direct_num" ISNULL) = ("issue_quorum_direct_den" ISNULL) AND
             ( "issue_quorum_direct_num" * "issue_quorum_den" <= "issue_quorum_num" * "issue_quorum_direct_den" OR
               "issue_quorum_direct_num" ISNULL OR "issue_quorum_num" ISNULL ) ) OR
           ( "polling" = TRUE AND
@@ -629,7 +629,7 @@ CREATE TABLE "issue" (
         CONSTRAINT "freeze_requires_snapshot"
           CHECK ("fully_frozen" ISNULL OR "snapshot" NOTNULL),
         CONSTRAINT "set_both_or_none_of_snapshot_and_latest_snapshot_event"
-          CHECK ("snapshot" NOTNULL = "latest_snapshot_event" NOTNULL) );
+          CHECK (("snapshot" NOTNULL) = ("latest_snapshot_event" NOTNULL)) );
 CREATE INDEX "issue_area_id_idx" ON "issue" ("area_id");
 CREATE INDEX "issue_policy_id_idx" ON "issue" ("policy_id");
 CREATE INDEX "issue_created_idx" ON "issue" ("created");
@@ -707,7 +707,7 @@ CREATE TABLE "initiative" (
         "rank"                  INT4,
         "text_search_data"      TSVECTOR,
         CONSTRAINT "all_or_none_of_revoked_and_revoked_by_member_id_must_be_null"
-          CHECK ("revoked" NOTNULL = "revoked_by_member_id" NOTNULL),
+          CHECK (("revoked" NOTNULL) = ("revoked_by_member_id" NOTNULL)),
         CONSTRAINT "non_revoked_initiatives_cant_suggest_other"
           CHECK ("revoked" NOTNULL OR "suggested_initiative_id" ISNULL),
         CONSTRAINT "revoked_initiatives_cant_be_admitted"
@@ -724,11 +724,12 @@ CREATE TABLE "initiative" (
         CONSTRAINT "better_excludes_worse" CHECK (NOT ("better_than_status_quo" AND "worse_than_status_quo")),
         CONSTRAINT "minimum_requirement_to_be_eligible" CHECK (
           "eligible" = FALSE OR
-          ("direct_majority" AND "indirect_majority" AND "better_than_status_quo") ),
+          ("direct_majority" = TRUE AND "indirect_majority" =TRUE AND "better_than_status_quo" =TRUE ) ),
         CONSTRAINT "winner_must_be_eligible" CHECK ("winner"=FALSE OR "eligible"=TRUE),
         CONSTRAINT "winner_must_have_first_rank" CHECK ("winner"=FALSE OR "rank"=1),
-        CONSTRAINT "eligible_at_first_rank_is_winner" CHECK ("eligible"=FALSE OR "rank"!=1 OR "winner"=TRUE),
-        CONSTRAINT "unique_rank_per_issue" UNIQUE ("issue_id", "rank") );
+        CONSTRAINT "eligible_at_first_rank_is_winner" CHECK ("eligible"=FALSE OR ("rank"!=1) OR "winner"=TRUE)
+           );
+CREATE UNIQUE Index  "unique_rank_per_issue" ON "initiative" ("issue_id", "rank"); 
 CREATE INDEX "initiative_created_idx" ON "initiative" ("created");
 CREATE INDEX "initiative_revoked_idx" ON "initiative" ("revoked");
 CREATE INDEX "initiative_text_search_data_idx" ON "initiative" USING gin ("text_search_data");

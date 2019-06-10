@@ -54,7 +54,8 @@ tabs[#tabs+1] = {
   params = {
     for_state = "open",
     issues_selector = open_issues_selector,
-    for_unit = true
+    for_unit = true,
+    filter_interest="any"
   }
 }
 
@@ -130,4 +131,6 @@ if config.notifyalot or not param.get("tab") then
     module = "index", view = "_notifications"
   }
 end
+=======
+
 ui.tabs(tabs)
