@@ -276,6 +276,8 @@ config.survey_winner = false
 -- as postgres Interval
 config.delete_private_data_after = '2 days'
 
+-- notifyalot not only on the main page
+config.notifyalot = true
 
 -- ========================================================================
 -- Do main initialisation (DO NOT REMOVE FOLLOWING SECTION)

@@ -94,7 +94,7 @@ tabs[#tabs+1] = {
   }
 }
 
-if not param.get("tab") then
+if config.notifyalot or not param.get("tab") then
   execute.view{
     module = "index", view = "_notifications"
   }

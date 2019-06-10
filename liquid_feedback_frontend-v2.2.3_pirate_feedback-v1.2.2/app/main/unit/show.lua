@@ -125,4 +125,9 @@ if app.session:has_access("all_pseudonymous") then
 
 end
 
+if config.notifyalot or not param.get("tab") then
+  execute.view{
+    module = "index", view = "_notifications"
+  }
+end
 ui.tabs(tabs)
