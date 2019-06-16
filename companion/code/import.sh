@@ -1,10 +1,12 @@
 #/bin/bash
 
 path="/opt/pirate_feedback/pirate_feedback/companion/"
+datei="20190612235220"
 
-cmd1=" tail -n +5 $path/files/20190501115933 | head -n -6 | sed 's/Ja;Du;hast;alle;Mitgliedsbeiträge;bezahlt;und;bist;stimmberechtigt./Ja/g' | awk  -F\";\" '/Ja/ {printf(\"%s\t\", \$0); next } 1' | sed 's/;;/; ;/g' |  grep --binary-files=text 'und bist stimmberechtig' " 
 
-cmd1=" iconv -fISO_8859-1 -tUTF-8 $path/files/20190501115933 | tail -n +5 | head -n -6 |  grep --binary-files=text 'stimm' | sed 's/Du hast alle.*bist stimmberechtigt./Ja/g' | sed 's/Es sind nicht.*nicht stimmberechtigt/Nein/g' | sed 's/\"//g' | sed 's/\x27/ /g' "
+cmd1=" tail -n +5 $path/files/$datei | head -n -6 | sed 's/Ja;Du;hast;alle;Mitgliedsbeiträge;bezahlt;und;bist;stimmberechtigt./Ja/g' | awk  -F\";\" '/Ja/ {printf(\"%s\t\", \$0); next } 1' | sed 's/;;/; ;/g' |  grep --binary-files=text 'und bist stimmberechtig' " 
+
+cmd1=" iconv -fISO_8859-1 -tUTF-8 $path/files/$datei | tail -n +5 | head -n -6 |  grep --binary-files=text 'stimm' | sed 's/Du hast alle.*bist stimmberechtigt./Ja/g' | sed 's/Es sind nicht.*nicht stimmberechtigt/Nein/g' | sed 's/\"//g' | sed 's/\x27/ /g' "
 
 
  echo $cmd1

@@ -22,11 +22,16 @@ ps: Falls Du Dich vor Deiner Anmeldung informieren moechtest,
 findet Du in der Newsbox auf https://wiki.piratenpartei.de/NDS:PG_SME 
 einige interessante Links. 
 
+pps: Du erhälst diese Mail auch, wenn Du jetzt wieder stimmberechtigt bist, 
+nachdem Du es eine Zeit lang nicht warst. Dann funktioniert Dein alter 
+Registrierungsschlüssel erneut. Oder Dein alter Login in der SME funktioniert
+wieder.
 "
 
  
 
 fromdate=`echo "select date(max(modtime) ) from import;" | psql -U companion -t companion`
+
 
 echo $fromdate
 

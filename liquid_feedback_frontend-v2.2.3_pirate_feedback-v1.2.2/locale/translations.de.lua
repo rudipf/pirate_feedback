@@ -622,7 +622,7 @@ return {
 ["Supported"] = "Unterstützt";
 ["Supporters"] = "Unterstützer";
 ["Syntax help"] = "Syntax-Hilfe";
-["Terms of use"] = "Nutzungsbedingungen";
+["Terms of use"] = "Nutzungsbedingungen & Datenschutzerklärung";
 ["The code you've entered is expired! Please contact #{support} to get a new one!"] = "Der Code, den du eingegeben hast, ist abgelaufen! Bitte wende dich an #{support}, um einen Neuen zu erhalten!";
 ["The code you've entered is invalid!"] = "Der Code, den du eingeben hast, ist nicht gültig!";
 ["The draft has not been changed!"] = "Der Entwurf wurde nicht verändert!";
@@ -708,7 +708,7 @@ return {
 ["Updated drafts"] = "Neue Entwürfe";
 ["Upload avatar/photo"] = "Avatar/Foto hochladen";
 ["Upload images"] = "Bilder hochladen";
-["Use terms"] = "Nutzungsbedingungen";
+["Use terms"] = "Nutzungsbedingungen & Datenschutzerklärung";
 ["Verification started"] = "Phase Eingefroren gestartet";
 ["Verification starts soon."] = "Phase Eingefroren beginnt in Kürze.";
 ["Verification time"] = "Zeit für Eingefroren";

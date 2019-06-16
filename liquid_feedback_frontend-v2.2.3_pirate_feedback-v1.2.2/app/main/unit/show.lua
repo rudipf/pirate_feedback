@@ -131,6 +131,5 @@ if config.notifyalot or not param.get("tab") then
     module = "index", view = "_notifications"
   }
 end
-=======
 
 ui.tabs(tabs)
