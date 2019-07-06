@@ -240,7 +240,7 @@ return {
 ["Finished (with winner)"] = "Abgeschlossen (mit Gewinner)";
 ["Finished (without winner)"] = "Abgeschlossen (ohne Gewinner)";
 ["Forgot login name?"] = "Anmeldename vergessen?";
-["Forgot password?"] = "Kennwort vergessen?";
+["Forgot password?"] = "Kennwort und/oder Login vergessen?";
 ["Free timing"] = "Freie Zeitsteuerung";
 ["Frozen"] = "Eingefroren";
 ["Fully frozen"] = "Ganz eingefroren";
@@ -510,7 +510,7 @@ return {
 ["Please enter the reset code you have received by email:"] = "Bitte gib den Rücksetzcode ein, den du per E-Mail erhalten hast:";
 ["Please enter your email address! You will receive an email with your login name."] = "Bitte die deine E-Mail-Adresse ein! Du wirst eine E-Mail mit deinem Anmeldenamen erhalten.";
 ["Please enter your email address. This address will be used for automatic notifications (if you request them) and in case you've lost your password. This address will not be published. After registration you will receive an email with a confirmation link."] = "Bitte gib deine E-Mail-Adresse ein. Diese Adresse wird für automatische Benachrichtigungen (wenn du diese anforderst) sowie zum Zurücksetzen des Kennworts verwendet. Diese Adresse wird nicht veröffentlicht. Nach Abschluss der Registrierung wirst du eine E-Mail mit einem Link zum Bestätigen der Adresse erhalten.";
-["Please enter your login name! You will receive an email with a link to reset your password. Note that your login name might be distinct from your screen name! Note that the login name is case sensitive!"] = "Bitte gib deinen Anmeldenamen ein! Du wirst eine E-Mail mit einem Link zum Zurücksetzen des Kennworts erhalten. Beachte, dass sich dein Anmeldename möglicherweise von deinem Screen-Namen unterscheidet! Beachte die Groß-/Kleinschreibung!";
+["Please enter your login name! You will receive an email with a link to reset your password. Note that your login name might be distinct from your screen name! Note that the login name is case sensitive!"] = "Bitte gib deinen Anmeldenamen ein! Du wirst eine E-Mail mit einem Link zum Zurücksetzen des Kennworts erhalten. Beachte, dass sich dein Anmeldename möglicherweise von deinem Screen-Namen unterscheidet! Beachte die Groß-/Kleinschreibung! Du kannst Dich als stimmberechtigter Pirat auch per Mail unter Angabe Deiner Mitgliedsnummer und Deines Registrierungsschlüssel an den Beauftragten für die SME ( Rudi pfeilsticker(at)freenet.de) wenden."; 
 ["Please enter your new password twice:"] = "Bitte gib dein neues Kennwort zweimal ein:";
 ["Please select your preferred notification level!"] = "Bitte wähle das gewünschte Benachrichtigungslevel!";
 ["Policies"] = "Regelwerke";
@@ -764,8 +764,8 @@ return {
 ["You are invited to become initiator of this initiative."] = "Du bist eingeladen Initiator dieser Initiative zu werden.";
 ["You are invited to one initiative."] = "Du bist zu einer Initiative eingeladen.";
 ["You are member."] = "Du bist Mitglied.";
-["You are not participating in any of the #{count} areas in this unit."] = "Du nimmst an keinem der #{count} Themenbereiche dieser Gliederung teil.";
-["You are not participating in the only area of the unit."] = "Du nimmst am einzigen Themenbereich der Gliederung nicht teil.";
+["You are not participating in any of the #{count} areas in this unit."] = "Du nimmst an keinem der #{count} Themenbereiche dieser Gliederung teil. Du erhälst keine Benachrichtigungen für Themenbereiche an denen Du nicht teilnimmst.";
+["You are not participating in the only area of the unit."] = "Du nimmst am einzigen Themenbereich der Gliederung nicht teil. Du erhälst keine Benachrichtigungen für Themenbereiche an denen Du nicht teilnimmst.";
 ["You are now initiator of this initiative."] = "Du bist jetzt Initiator dieser Initiative.";
 ["You are participating in this area."] = "Du bist Teilnehmer im Themenbereich.";
 ["You are potential supporter of this initiative via delegation."] = "Du bist durch Delegation potentieller Unterstützer der Initiative.";
