@@ -12,6 +12,21 @@ if app.session.member.notify_level == nil then
     module = "member", view = "settings_notification",
     text = _"Please select your preferred notification level!"
   }
+else
+local no_area_selector = Area:new_selector()
+ :reset_fields()
+ :add_field("area.id", nil, { "grouped" })
+ :add_where{ "area.active" }
+ :join("membership", nil, { "membership.area_id = area.id AND membership.member_id = ?", app.session.member.id })
+ :count()
+
+if no_area_selector == 0 then
+  notification_links[#notification_links+1] = {
+    module = "member", view = "settings_notification",
+    text = _"Please participate in an area to recieve notifications!"
+}
+end
+
 end
 
 local expiring_delegations_selector = Delegation:new_selector()

@@ -513,6 +513,7 @@ return {
 ["Please enter your login name! You will receive an email with a link to reset your password. Note that your login name might be distinct from your screen name! Note that the login name is case sensitive!"] = "Bitte gib deinen Anmeldenamen ein! Du wirst eine E-Mail mit einem Link zum Zurücksetzen des Kennworts erhalten. Beachte, dass sich dein Anmeldename möglicherweise von deinem Screen-Namen unterscheidet! Beachte die Groß-/Kleinschreibung! Du kannst Dich als stimmberechtigter Pirat auch per Mail unter Angabe Deiner Mitgliedsnummer und Deines Registrierungsschlüssel an den Beauftragten für die SME ( Rudi pfeilsticker(at)freenet.de) wenden."; 
 ["Please enter your new password twice:"] = "Bitte gib dein neues Kennwort zweimal ein:";
 ["Please select your preferred notification level!"] = "Bitte wähle das gewünschte Benachrichtigungslevel!";
+["Please participate in an area to recieve notifications!"] = "Bitte nimm an einem Themenbereich teil, um Benachrichtigungen aus diesem Themenbereich zu erhalten!";
 ["Policies"] = "Regelwerke";
 ["Policy"] = "Regelwerk";
 ["Policy '#{name}'"] = "Regelwerk '#{name}'";
