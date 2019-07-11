@@ -1,5 +1,7 @@
 local notification_links = {}
 
+if app.session.member then
+
 if app.session.member.notify_email_unconfirmed then
   notification_links[#notification_links+1] = {
     module = "index", view = "email_unconfirmed",
@@ -163,3 +165,7 @@ if #notification_links > 0 then
     end }
   end }
 end
+
+end
+
+
