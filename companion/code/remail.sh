@@ -28,7 +28,8 @@ Registrierungsschlüssel erneut. Oder Dein alter Login in der SME funktioniert
 wieder.
 
 pps: Diese Erinnerung erreicht Dich auch, weil ein Teil der Einladungen
-nicht erfolgreich verschickt werden konnte.
+nicht erfolgreich verschickt werden konnte. Oder Du Deinen Code erneut angefordert
+hast.
 
 
 "
@@ -40,7 +41,8 @@ echo $fromdate
 
 includes=`su www-data -c "psql pirate_feedback -t -c 'select invite_code from member where active = false;'" | awk ' { a="'"'"'"; if ($0 ~ "a"){ sub(" ","",$0);print a$0a"," }}' `
 
-andclause=" and regkey='..' " 
+andclause=" and comp_user_mitgliedsnummer='46388' "
+#andclause=" and regkey='..' " 
 #andclause=" and comp_emailaddress='...@gmx.de' "
 #andclause=" and comp_emailaddress like 'u%' "
 #andclause=" and comp_name2 like '% %' "

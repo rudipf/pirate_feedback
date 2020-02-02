@@ -29,8 +29,9 @@ slot.put_into("default", [[		<script>
 			document.links.surveylink.href+="&startdate="+textInput
 			}
 		</script>
-		<label for="startdatum">Startdatum:<input type="date" id="startdatum" name="startdatum" oninput="checkInput('startdatum');"></label> 
+		<label for="startdatum">Startdatum: <input type="date" id="startdatum" name="startdatum" oninput="checkInput('startdatum');"></label> 
 ]])
+
  
  ui.tag{tag="li", content =function()
    ui.link{
@@ -41,6 +42,7 @@ slot.put_into("default", [[		<script>
      params ={ 
          area= config.survey_area,
          policy=config.survey_policy,
+         maxitems=config.survey_maxitems,
          winner=config.survey_winner
          }
       }

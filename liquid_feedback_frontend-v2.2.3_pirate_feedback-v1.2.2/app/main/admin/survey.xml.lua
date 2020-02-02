@@ -25,8 +25,10 @@ from initiative ini ,issue isu
 where ini.issue_id=isu.id 
 and area_id=]]
 sql=sql..config.survey_area.." and policy_id="..config.survey_policy
-sql=sql.." and winner=false"
+sql=sql.." and winner=true"
 sql=sql.." and closed>'"..tostring(param.get("startdate",atom.date)).."'"
+sql=sql.." order by isu.id,ini.id"
+sql=sql.." limit "..config.survey_maxitems
 
 local inis=db:query(sql,"list")
 
