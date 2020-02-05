@@ -70,7 +70,7 @@ xmls("gid","<![CDATA[1]]>")
 xmle()
 xmls("sid","<![CDATA[165353]]>")
 xmle()
-xmls("group_name","<![CDATA[Test Question Group]]>")
+xmls("group_name","<![CDATA[Beschlüsse der zweiten Kammer des SME]]>")
 xmle()
 xmls("group_order","<![CDATA[0]]>")
 xmle()
@@ -124,6 +124,8 @@ xmle()
 xmle()
 xmls("rows","")
 
+mail_text=""
+
 -- question/initiative loop 
 for i,ini in ipairs(inis) do 
 
@@ -131,6 +133,9 @@ local initiative = Initiative:by_id(ini[1])
 local questiontext=initiative.current_draft:get_content("html")
 
 xmls("row","")
+local inititle="<b>PP SME "..initiative.id.." ("..initiative.name..")</b></p>"
+mail_text=mail_text.."<a href=https://www.sme-nds.de/initiative/show/"..initiative.id..".html>PP SME "..initiative.id.." ("..initiative.name..")</a></p>"
+
 xmls("qid","<![CDATA["..initiative.id.."]]>")
 xmle()
 xmls("parent_qid","<![CDATA[0]]>")
@@ -143,11 +148,11 @@ xmls("type","<![CDATA[Y]]>")
 xmle()
 xmls("title","<![CDATA[A]]>")
 xmle()
-xmls("question","<![CDATA["..questiontext.."]]>")
+xmls("question","<![CDATA["..inititle..questiontext.."]]>")
 xmle()
 xmls("preg","")
 xmle()
-xmls("help","<![CDATA[Hilfe Text zur Frage]]>")
+xmls("help","<![CDATA[Stimmst Du für den obigen Text ? ]]>")
 xmle()
 xmls("other","<![CDATA[N]]>")
 xmle()
@@ -297,7 +302,7 @@ xmls("admin","")
 xmle()
 xmls("adminemail","")
 xmle()
-xmls("anonymized","<![CDATA[N]]>")
+xmls("anonymized","<![CDATA[Y]]>")
 xmle()
 xmls("faxto","")
 xmle()
@@ -337,9 +342,9 @@ xmls("publicgraphs","<![CDATA[N]]>")
 xmle()
 xmls("listpublic","<![CDATA[N]]>")
 xmle()
-xmls("htmlemail","<![CDATA[Y]]>")
+xmls("htmlemail","<![CDATA[N]]>")
 xmle()
-xmls("sendconfirmation","<![CDATA[Y]]>")
+xmls("sendconfirmation","<![CDATA[N]]>")
 xmle()
 xmls("tokenanswerspersistence","<![CDATA[N]]>")
 xmle()
@@ -361,7 +366,7 @@ xmls("showxquestions","<![CDATA[Y]]>")
 xmle()
 xmls("showgroupinfo","<![CDATA[B]]>")
 xmle()
-xmls("shownoanswer","<![CDATA[N]]>")
+xmls("shownoanswer","<![CDATA[Y]]>")
 xmle()
 xmls("showqnumcode","<![CDATA[X]]>")
 xmle()
@@ -439,42 +444,33 @@ xmls("surveyls_survey_id","<![CDATA[165353]]>")
 xmle()
 xmls("surveyls_language","<![CDATA[de]]>")
 xmle()
-xmls("surveyls_title","<![CDATA[Test Title]]>")
+xmls("surveyls_title","<![CDATA[2.Kammer des Ständigen Mitgliederentscheids der Piratenpartei Niedersachsen im "..os.date("%B").." "..os.date("%Y").."]]>")
 xmle()
-xmls("surveyls_description","<![CDATA[Test Description]]>")
+xmls("surveyls_description","<![CDATA[Anträge nach <a href=https://wiki.piratenpartei.de/NDS:Satzung#.C2.A7_13b_Der_st.C3.A4ndige_Mitgliederentscheid> §13(b) der Landessatzung</a>]]>")
 xmle()
-xmls("surveyls_welcometext","<![CDATA[Test Welcome Message]]>")
+xmls("surveyls_welcometext","<![CDATA[Die folgenden Anträge wurden in <a href=https://www.sme-nds.de>der ersten Kammer des SME</a> angenommen und können jetzt von Dir in der zweiten Kammer abgesimmt werden. Du kannst ihnen zustimmen, sie ablehnen oder Dich bei einzelnen Anträgen enthalten. Sie gelten als angenommen und stehen dann Positionspapieren der Landesmitgliederversammlung gleich, wenn eine Mehrheit der abgegebenen gültigen Stimmen íhnen zustimmt. (Also mehr Ja als Nein Stimmen). ]]>")
 xmle()
-xmls("surveyls_endtext","<![CDATA[Test End Message]]>")
+xmls("surveyls_endtext","<![CDATA[Vielen Dank für Deine Teilnahme.]]>")
 xmle()
 xmls("surveyls_url","")
 xmle()
-xmls("surveyls_email_invite_subj","<![CDATA[Invitation to participate in a survey]]>")
+xmls("surveyls_email_invite_subj","<![CDATA[Einladung zur Abstimmung in der 2.Kammer des SME]]>")
 xmle()
-xmls("surveyls_email_invite",[=[<![CDATA[Dear {FIRSTNAME},<br />
+
+xmls("surveyls_email_invite",[=[<![CDATA[Ahoi {FIRSTNAME},<br />
 <br />
-you have been invited to participate in a survey.<br />
+Ich möchte Dich als Beauftragter für den Ständigen Mitgliederentscheid der Piratenpartei Noiedersachsen einladen Deine Stimme in der zweiten Kammer abzugeben.<br />
+Die folgenden Anträge stehen zur Abstimmung, da Sie in der ersten Kammer beschlossen worden sind.</p> 
+]=]..mail_text..[=[
+Um Deine Stimme abzugeben, klicke bitte auf den folgenden Link:<br />
 <br />
-The survey is titled:<br />
-"{SURVEYNAME}"<br />
-<br />
-"{SURVEYDESCRIPTION}"<br />
-<br />
-To participate, please click on the link below.<br />
-<br />
-Sincerely,<br />
-<br />
-{ADMINNAME} ({ADMINEMAIL})<br />
-<br />
-----------------------------------------------<br />
-Click here to do the survey:<br />
 {SURVEYURL}<br />
-<br />
-If you do not want to participate in this survey and don't want to receive any more invitations please click the following link:<br />
-{OPTOUTURL}<br />
-<br />
-If you are blacklisted but want to participate in this survey and want to receive invitations please click the following link:<br />
-{OPTINURL}]]>]=])
+
+mit freundlichen Grüßen,
+Rüdiger (Rudi) Pfeilsticker
+(pfeilsticker@freenet.de)
+
+]]>]=])
 xmle()
 xmls("surveyls_email_remind_subj","<![CDATA[Reminder to participate in a survey]]>")
 xmle()
