@@ -11,7 +11,8 @@ function format.wiki_text(wiki_text, formatting_engine)
   wiki_text =string.gsub(wiki_text, "„", [["]] )
   wiki_text =string.gsub(wiki_text, "“", [["]] )
   wiki_text =string.gsub(wiki_text, "–", "-" )
- 
+  wiki_text =string.gsub(wiki_text, "€", "{\Eur}" )
+   
 
   
   local html, errmsg, exitcode = assert(

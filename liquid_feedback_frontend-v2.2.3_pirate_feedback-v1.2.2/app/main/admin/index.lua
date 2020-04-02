@@ -24,12 +24,22 @@ ui.tag{ tag = "ul", attr = { class = "menu_list" }, content = function()
   end }
 
 slot.put_into("default", [[		<script>
-		function checkInput(startdatum) {
+		function checkInput1(startdatum) {
 			var textInput = document.getElementById(startdatum).value;	
 			document.links.surveylink.href+="&startdate="+textInput
 			}
 		</script>
-		<label for="startdatum">Startdatum: <input type="date" id="startdatum" name="startdatum" oninput="checkInput('startdatum');"></label> 
+		<label for="startdatum">Startdatum: <input type="date" id="startdatum" name="startdatum" onchange="checkInput1('startdatum');"></label></p> 
+]])
+
+
+slot.put_into("default", [[             <script>
+                function checkInput(startini) {
+                        var textInput = document.getElementById(startini).value;
+                        document.links.surveylink.href+="&startini="+textInput
+                        }
+                </script>
+                <label for="startini">Startini: <input type="integer" id="startini" name="startini" onchange="checkInput('startini');"></label></p>
 ]])
 
  

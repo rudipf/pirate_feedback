@@ -1,7 +1,7 @@
 #/bin/bash
 
 path="/opt/pirate_feedback/pirate_feedback/companion/"
-datei="20200201"
+datei="20200307"
 
 
 cmd1=" tail -n +5 $path/files/$datei | head -n -6 | sed 's/Ja;Du;hast;alle;Mitgliedsbeiträge;bezahlt;und;bist;stimmberechtigt./Ja/g' | awk  -F\";\" '/Ja/ {printf(\"%s\t\", \$0); next } 1' | sed 's/;;/; ;/g' |  grep --binary-files=text 'und bist stimmberechtig' " 

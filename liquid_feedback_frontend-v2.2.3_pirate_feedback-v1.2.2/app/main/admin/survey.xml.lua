@@ -19,6 +19,9 @@ istack=istack-1
 slot.put_into("default",'</'..stack[istack]..'>\n')
 end
 
+local startdate=tostring(param.get("startdate",atom.date))
+local startini=tostring(param.get("startini",atom.integer))
+
 local sql=[[
 select ini.id as ini_id, isu.id as issue_id 
 from initiative ini ,issue isu 
@@ -26,7 +29,13 @@ where ini.issue_id=isu.id
 and area_id=]]
 sql=sql..config.survey_area.." and policy_id="..config.survey_policy
 sql=sql.." and winner=true"
-sql=sql.." and closed>'"..tostring(param.get("startdate",atom.date)).."'"
+if not startdate==nil then
+  sql=sql.." and closed>'"..startdate.."'"
+end
+if  startini then 
+  sql=sql.." and ini.id >= "..startini
+end
+
 sql=sql.." order by isu.id,ini.id"
 sql=sql.." limit "..config.survey_maxitems
 
@@ -36,13 +45,15 @@ local inis=db:query(sql,"list")
 
 slot.put_into("default",[=[<?xml version="1.0" encoding="UTF-8"?>]=])
 
+--slot.put_into("default","<!--- "..sql.." "..startini.."--->")
+
 xmls("document","")
 xmls("LimeSurveyDocType","Survey")
 xmle()
 xmls("DBVersion","347")
 xmle()
 xmls("languages","")
-xmls("language","de")
+xmls("language","de-informal")
 xmle()
 xmle()
 xmls("groups","")
@@ -134,7 +145,7 @@ local questiontext=initiative.current_draft:get_content("html")
 
 xmls("row","")
 local inititle="<b>PP SME "..initiative.id.." ("..initiative.name..")</b></p>"
-mail_text=mail_text.."<a href=https://www.sme-nds.de/initiative/show/"..initiative.id..".html>PP SME "..initiative.id.." ("..initiative.name..")</a></p>"
+mail_text=mail_text.."<a href=\"https://www.sme-nds.de/initiative/show/"..initiative.id..".html\">PP SME "..initiative.id.." ("..initiative.name..")</a></p>"
 
 xmls("qid","<![CDATA["..initiative.id.."]]>")
 xmle()
@@ -318,11 +329,11 @@ xmls("additional_languages","")
 xmle()
 xmls("datestamp","<![CDATA[N]]>")
 xmle()
-xmls("usecookie","<![CDATA[N]]>")
+xmls("usecookie","<![CDATA[Y]]>")
 xmle()
 xmls("allowregister","<![CDATA[N]]>")
 xmle()
-xmls("allowsave","<![CDATA[Y]]>")
+xmls("allowsave","<![CDATA[N]]>")
 xmle()
 xmls("autonumber_start","<![CDATA[0]]>")
 xmle()
@@ -342,7 +353,7 @@ xmls("publicgraphs","<![CDATA[N]]>")
 xmle()
 xmls("listpublic","<![CDATA[N]]>")
 xmle()
-xmls("htmlemail","<![CDATA[N]]>")
+xmls("htmlemail","<![CDATA[Y]]>")
 xmle()
 xmls("sendconfirmation","<![CDATA[N]]>")
 xmle()
@@ -448,7 +459,7 @@ xmls("surveyls_title","<![CDATA[2.Kammer des Ständigen Mitgliederentscheids der
 xmle()
 xmls("surveyls_description","<![CDATA[Anträge nach <a href=https://wiki.piratenpartei.de/NDS:Satzung#.C2.A7_13b_Der_st.C3.A4ndige_Mitgliederentscheid> §13(b) der Landessatzung</a>]]>")
 xmle()
-xmls("surveyls_welcometext","<![CDATA[Die folgenden Anträge wurden in <a href=https://www.sme-nds.de>der ersten Kammer des SME</a> angenommen und können jetzt von Dir in der zweiten Kammer abgesimmt werden. Du kannst ihnen zustimmen, sie ablehnen oder Dich bei einzelnen Anträgen enthalten. Sie gelten als angenommen und stehen dann Positionspapieren der Landesmitgliederversammlung gleich, wenn eine Mehrheit der abgegebenen gültigen Stimmen íhnen zustimmt. (Also mehr Ja als Nein Stimmen). ]]>")
+xmls("surveyls_welcometext","<![CDATA[Die folgenden Anträge wurden in <a href=https://www.sme-nds.de>der ersten Kammer des SME</a> angenommen und können jetzt von Dir in der zweiten Kammer abgestimmt werden. Du kannst ihnen zustimmen, sie ablehnen oder Dich bei einzelnen Anträgen enthalten. Sie gelten als angenommen und stehen dann Positionspapieren der Landesmitgliederversammlung gleich, wenn eine Mehrheit der abgegebenen gültigen Stimmen íhnen zustimmt. (Also mehr Ja als Nein Stimmen). ]]>")
 xmle()
 xmls("surveyls_endtext","<![CDATA[Vielen Dank für Deine Teilnahme.]]>")
 xmle()
@@ -459,9 +470,11 @@ xmle()
 
 xmls("surveyls_email_invite",[=[<![CDATA[Ahoi {FIRSTNAME},<br />
 <br />
-Ich möchte Dich als Beauftragter für den Ständigen Mitgliederentscheid der Piratenpartei Noiedersachsen einladen Deine Stimme in der zweiten Kammer abzugeben.<br />
-Die folgenden Anträge stehen zur Abstimmung, da Sie in der ersten Kammer beschlossen worden sind.</p> 
+
+Ich möchte Dich als Beauftragter für den Ständigen Mitgliederentscheid der Piratenpartei Niedersachsen einladen innerhalb der nächsten 21 Tage Deine Stimme in der zweiten Kammer abzugeben.<br />
+Die folgenden Anträge stehen zur Abstimmung, da Sie in der ersten Kammer beschlossen worden sind.<br /> 
 ]=]..mail_text..[=[
+<br />
 Um Deine Stimme abzugeben, klicke bitte auf den folgenden Link:<br />
 <br />
 {SURVEYURL}<br />

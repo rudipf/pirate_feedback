@@ -1,1 +1,3 @@
 Die folgenden Regelwerke sind zur Zeit konfiguriert. Nicht alle Regelwerke müssen in jedem Themengebiet verfügbar sein.
+Wenn die "Anzupassende Zeiten" auf true steht, werden mit der Zulassung die nachfolgenden Phasen so verlängert, dass die
+Abstimmung an einem Sonntag um 15 Uhr endet.

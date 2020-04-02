@@ -126,7 +126,7 @@ return {
 ["Change password"] = "Kennwort ändern";
 ["Change vote"] = "Abstimmung ändern";
 ["Change your login"] = "Deinen Anmeldenamen ändern";
-["Change your notification email address"] = "Deine E-Mail-Adresse für Benachrichtigungen ändern";
+["Change your notification email address"] = "Deine E-Mail-Adresse für Benachrichtigungen ";
 ["Change your password"] = "Dein Kennwort ändern";
 ["Change your screen name"] = "Deinen Screen-Namen ändern";
 ["Choose initiator"] = "Initiator auswählen";
@@ -595,7 +595,7 @@ return {
 ["Software"] = "Software";
 ["Sorry, but there is no confirmed email address for this account. Please contact #{support}!"] = "Sorry, aber für diesen Account ist keine bestätigte E-Mail-Adresse hinterlegt. Bitte wende dich an #{support}!";
 ["Sorry, but you are currently not invited!"] = "Sorry, aber du bist zur Zeit nicht eingeladen!";
-["Sorry, but your account is locked. To get unlocked please contact #{support}!"] = "Sorry, aber dein Account ist gesperrt. Um die Sperre aufzuheben wende dich bitte an #{support}!";
+["Sorry, but your account is locked. To get unlocked please contact #{support}!"] = "Sorry, aber dein Account ist gesperrt, da Du aktuell nicht stimmberechtigt bist. Bitte überweise Deinen Mitgliedsbeitrag https://www.piratenpartei.de/werde-pirat/mitgliedsbeitrag/ .Bei weiteren Fragen wende dich bitte an #{support}!";
 ["Sorry, you have reached your personal flood limit. Please be slower..."] = "Sorry, du hast dein persönliches Flood-Limit erreicht. Bitte sei langsamer...";
 ["Sorry, your contingent for creating initiatives has been used up. Please try again later."] = "Sorry, dein Antragskontingent ist zur Zeit ausgeschöpft. Bitte versuche es später erneut!";
 ["Source"] = "Quelltext";

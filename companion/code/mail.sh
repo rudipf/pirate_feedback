@@ -23,7 +23,7 @@ findet Du in der Newsbox auf https://wiki.piratenpartei.de/NDS:PG_SME
 einige interessante Links. 
 
 pps: Du erhälst diese Mail auch, wenn Du jetzt wieder stimmberechtigt bist, 
-nachdem Du es eine Zeit lang nicht warst. Dann funktioniert Dein alter 
+nachdem Du es eine Zeit lang nicht warst. Entweder funktioniert dann Dein alter 
 Registrierungsschlüssel erneut. Oder Dein alter Login in der SME funktioniert
 wieder.
 "
