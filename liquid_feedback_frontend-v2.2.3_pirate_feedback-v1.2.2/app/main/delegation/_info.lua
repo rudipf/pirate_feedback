@@ -61,7 +61,7 @@ if issue and not issue.delegation then
         :limit(1)
         :exec()
 
-      slot.put('<div class="delegation_info_none">')
+      slot.put('<div class="delegation_info_none">Delegationen ')
 
       for i, record in ipairs(delegation_chain) do
 
@@ -153,7 +153,7 @@ ui.link{
 
     end
 
-    slot.put('<div class="delegation_info_none">')
+    slot.put('<div class="delegation_info_none">Delegationen ')
     local dots_displayed = false
 
     for i, record in ipairs(delegation_chain) do

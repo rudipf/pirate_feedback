@@ -40,10 +40,6 @@ slot.select('navigation', function()
     }
   end
 
-end)
-
-slot.select('navigation_right', function()
-
   if app.session.member_id then
 
     ui.link{
@@ -58,6 +54,14 @@ slot.select('navigation_right', function()
         }
       }
     }
+  end
+
+end)
+
+slot.select('navigation_right', function()
+
+if app.session.member_id then
+
 
     if app.session.member.admin then
       ui.link{
